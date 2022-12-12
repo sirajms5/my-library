@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sirajsaleem.my_library.MoreDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bkImg"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/book_image"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/constraintParent"
+            tools:ignore="ImageContrastCheck" />
+
+        <Button
+            android:id="@+id/favBtn"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_favorites"
+            app:layout_constraintEnd_toEndOf="@+id/wishlistBtn"
+            app:layout_constraintStart_toStartOf="@+id/wishlistBtn"
+            app:layout_constraintTop_toBottomOf="@+id/wishlistBtn" />
+
+        <TextView
+            android:id="@+id/bookNameInDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/textview"
+            android:textColor="@color/metalic_black"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/readingStatus"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/authorNameInDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/textview"
+            android:textColor="@color/metalic_black"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/bookNameInDetails"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/publicationYearInDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/textview"
+            android:textColor="@color/metalic_black"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/authorNameInDetails"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/pagesNumberInDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/textview"
+            android:textColor="@color/metalic_black"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/publicationYearInDetails"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/notesInDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/textview"
+            android:textColor="@color/metalic_black"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintWidth_percent="0.883" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/delete_book"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notesInDetails" />
+
+        <Button
+            android:id="@+id/currentlyReadingBtn"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:text="@string/currently_reading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bkImg"
+            app:layout_constraintTop_toTopOf="@+id/bkImg" />
+
+        <Button
+            android:id="@+id/alreadyReadBtn"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:text="@string/finished_reading"
+            app:layout_constraintEnd_toEndOf="@+id/currentlyReadingBtn"
+            app:layout_constraintStart_toStartOf="@+id/currentlyReadingBtn"
+            app:layout_constraintTop_toBottomOf="@+id/currentlyReadingBtn" />
+
+        <Button
+            android:id="@+id/wishlistBtn"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_wishlist"
+            app:layout_constraintEnd_toEndOf="@+id/alreadyReadBtn"
+            app:layout_constraintStart_toStartOf="@+id/alreadyReadBtn"
+            app:layout_constraintTop_toBottomOf="@+id/alreadyReadBtn" />
+
+        <TextView
+            android:id="@+id/readingStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/textview"
+            android:textColor="@color/metalic_black"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/bkImg"
+            app:layout_constraintStart_toStartOf="@+id/bkImg"
+            app:layout_constraintTop_toBottomOf="@+id/bkImg" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bookName"
+            android:textColor="@color/metalic_black"
+            app:layout_constraintBottom_toBottomOf="@+id/bookNameInDetails"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/bookNameInDetails" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/bookAuthor"
+            android:textColor="@color/metalic_black"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/publicationYear"
+            android:textColor="@color/metalic_black"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/bookPages"
+            android:textColor="@color/metalic_black"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/notes_with_colon"
+            android:textColor="@color/metalic_black"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="180dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="19dp" />
+
+        <TextView
+            android:id="@+id/editNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/metalic_black"
+            app:drawableStartCompat="@drawable/ic_edit_note"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

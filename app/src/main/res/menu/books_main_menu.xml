@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add"
+        android:title="@string/addBook"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/edit"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/edit"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sort"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/az"
+                android:title="@string/a_z" />
+            <item
+                android:id="@+id/za"
+                android:title="@string/z_a" />
+            <item
+                android:id="@+id/dateAdded"
+                android:title="@string/date_added" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/cancelPermissions"
+        android:icon="@drawable/ic_cancel_permissions"
+        android:title="@string/cancel_permissions"
+        app:showAsAction="never" />
+
+</menu>

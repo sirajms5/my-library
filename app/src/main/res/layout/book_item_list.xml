@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardParent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="@color/languid_lavender"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/expandedCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/mainCard"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/idNumTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/bookId"
+                android:textColor="@color/metalic_black" />
+
+            <TextView
+                android:id="@+id/authorNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idNumTxt"
+                android:layout_marginTop="5dp"
+                android:text="@string/bookAuthor"
+                android:textColor="@color/metalic_black" />
+
+            <TextView
+                android:id="@+id/publicationYearTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/authorNameTxt"
+                android:layout_marginTop="5dp"
+                android:text="@string/publicationYear"
+                android:textColor="@color/metalic_black" />
+
+            <TextView
+                android:id="@+id/pagesNumberTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/publicationYearTxt"
+                android:layout_marginTop="5dp"
+                android:text="@string/bookPages"
+                android:textColor="@color/metalic_black" />
+
+            <TextView
+                android:id="@+id/addNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pagesNumberTxt"
+                android:layout_marginTop="5dp"
+                android:text="@string/edit_notes"
+                android:textColor="@color/metalic_black"
+                app:drawableLeftCompat="@drawable/ic_edit_note" />
+
+            <TextView
+                android:id="@+id/moreDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addNotes"
+                android:layout_marginTop="5dp"
+                android:text="@string/moreDetails"
+                android:textColor="@color/metalic_black"
+                app:drawableLeftCompat="@drawable/ic_view" />
+
+            <TextView
+                android:id="@+id/collapsedArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/idNumTxt"
+                android:layout_alignBottom="@id/addNotes"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingHorizontal="-1dp"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/authorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idNumTxt"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/authorNameTxt"
+                android:text="@string/textview"
+                android:textColor="@color/metalic_black"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/publicationYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/authorName"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/publicationYearTxt"
+                android:text="@string/textview"
+                android:textColor="@color/metalic_black"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/pagesNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/publicationYearTxt"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/pagesNumberTxt"
+                android:text="@string/textview"
+                android:textColor="@color/metalic_black"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/idNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/idNumTxt"
+                android:text="@string/textview"
+                android:textColor="@color/metalic_black"
+                android:textStyle="italic" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mainCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:animateLayoutChanges="true">
+
+            <ImageView
+                android:id="@+id/bookImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_toEndOf="@id/bookCheckbox"
+                android:contentDescription="@string/book_image"
+                android:src="@mipmap/books" />
+
+
+            <TextView
+                android:id="@+id/bookName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bookImage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/lemon"
+                android:text="@string/bookName"
+                android:textAlignment="center"
+                android:textColor="@color/metalic_black" />
+
+            <TextView
+                android:id="@+id/expandArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/bookImage"
+                android:layout_alignBottom="@id/bookName"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/bookImage"
+                android:paddingHorizontal="-1dp"
+                android:visibility="visible"
+                app:drawableStartCompat="@drawable/ic_right_arrow" />
+
+            <CheckBox
+                android:id="@+id/bookCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/bookImage"
+                android:layout_alignBottom="@+id/bookName"
+                android:layout_centerVertical="true"
+                android:minHeight="48dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
