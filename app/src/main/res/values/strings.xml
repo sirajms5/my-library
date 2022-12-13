@@ -70,4 +70,9 @@
     <string name="z_a">Z-A</string>
     <string name="date_added">Date Added</string>
     <string name="cancel_permissions">Cancel Permissions</string>
+    <string name="statistics_permission">Statistics Permission</string>
+    <string name="Stat_permission_message"><![CDATA[Allow My Library to access information such as length and frequency of application usage as well as geographical region.\nYou can cancel permission at anytime from menu -> cancel permissions]]></string>
+    <string name="deny">deny</string>
+    <string name="allow">allow</string>
+    <string name="permission_check_box">Don\'t show this message again</string>
 </resources>

@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
@@ -191,7 +193,9 @@ public class RecListActivity extends AppCompatActivity implements MethodsFactory
                 dialog = new Dialog(this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setContentView(R.layout.search_prompt_dialog);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90); // to make width of dialog 90% of screen width
+                dialog.getWindow().setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.setCancelable(true);
                 dialog.show();
                 Button searchBtn = dialog.findViewById(R.id.searchBtn);

@@ -3,9 +3,16 @@ package com.sirajsaleem.my_library;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -26,9 +33,6 @@ public class MainActivity extends AppCompatActivity implements MethodsFactory{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
         if(getIntent().getBooleanExtra("back", false)){
             overridePendingTransition(R.anim.navigation_back_slide_in, R.anim.navigation_back_slide_out);
         }
@@ -42,19 +46,38 @@ public class MainActivity extends AppCompatActivity implements MethodsFactory{
         if(BooksArray.getInstance(this).getPermission("firebaseAnalytics")) {
             mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-            dialog.setTitle("Statistics Permission");
-            dialog.setMessage("Allow My Library to access information such as length and frequency of application usage as well as geographical region.\nYou can cancel permission at anytime from menu -> cancel permissions");
-            dialog.setPositiveButton("ALLOW", (dialog12, which) -> {
-                mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
-                BooksArray.getInstance(MainActivity.this).grantPermissions("firebaseAnalytics", true);
-            });
-            dialog.setNegativeButton("DENY", (dialog1, which) -> {
-                mFirebaseAnalytics.setAnalyticsCollectionEnabled(false);
-                BooksArray.getInstance(MainActivity.this).grantPermissions("firebaseAnalytics", false);
-            });
-            dialog.setCancelable(true);
-            dialog.show();
+            if(!BooksArray.getInstance(this).getPermission("noDialog")) {
+                Dialog dialog = new Dialog(this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setContentView(R.layout.firebase_permission_dialog);
+                int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90); //making width of dialog 90% of screen width
+                dialog.getWindow().setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setCancelable(true);
+                dialog.show();
+
+                TextView allow = dialog.findViewById(R.id.allowTxt);
+                TextView deny = dialog.findViewById(R.id.denyTxt);
+                CheckBox neverShowCheckBox = dialog.findViewById(R.id.permissionCheckBox);
+
+                allow.setOnClickListener(v -> {
+                    dialog.dismiss();
+                    mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                    BooksArray.getInstance(MainActivity.this).grantPermissions("firebaseAnalytics", true);
+                    if (neverShowCheckBox.isChecked()) {
+                        BooksArray.getInstance(this).grantPermissions("noDialog", true);
+                    }
+                });
+
+                deny.setOnClickListener(v -> {
+                    dialog.dismiss();
+                    mFirebaseAnalytics.setAnalyticsCollectionEnabled(false);
+                    BooksArray.getInstance(MainActivity.this).grantPermissions("firebaseAnalytics", false);
+                    if (neverShowCheckBox.isChecked()) {
+                        BooksArray.getInstance(this).grantPermissions("noDialog", true);
+                    }
+                });
+            }
         }
 
         if(getSupportActionBar() != null){
