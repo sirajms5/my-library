@@ -23,10 +23,15 @@ public class BooksArray {
     private final static String SEARCH_RESULTS_KEY = "searchResults";
     private final static String SORT_BY_KEY = "sortBy";
     private final static String FIREBASE_ANALYTICS_PERMISSION_KEY = "firebaseAnalytics";
+    private final static String DONT_SHOW_FIREBASE_DIALOG_KEY = "noDialog";
 
     private BooksArray(Context context) {
 
         sharedPreferences = context.getSharedPreferences("db", Context.MODE_PRIVATE);
+
+        if(!getPermission("noDialog")){
+            saveNewPermissions(DONT_SHOW_FIREBASE_DIALOG_KEY);
+        }
 
         if(!getPermission("firebaseAnalytics")){
             saveNewPermissions(FIREBASE_ANALYTICS_PERMISSION_KEY);
@@ -100,6 +105,8 @@ public class BooksArray {
                 return sharedPreferences.getBoolean(CAMERA_PERMISSION_KEY, false);
             case "firebaseAnalytics":
                 return sharedPreferences.getBoolean(FIREBASE_ANALYTICS_PERMISSION_KEY, false);
+            case "noDialog":
+                return sharedPreferences.getBoolean(DONT_SHOW_FIREBASE_DIALOG_KEY, false);
             default:
                 return false;
         }
@@ -119,6 +126,10 @@ public class BooksArray {
             case "firebaseAnalytics":
                 editor.remove(FIREBASE_ANALYTICS_PERMISSION_KEY);
                 editor.putBoolean(FIREBASE_ANALYTICS_PERMISSION_KEY, permission);
+            case "noDialog":
+                editor.remove(DONT_SHOW_FIREBASE_DIALOG_KEY);
+                editor.putBoolean(DONT_SHOW_FIREBASE_DIALOG_KEY, permission); // to make permission dialog never shows up again
+                break;
         }
         editor.apply();
     }
@@ -407,6 +418,7 @@ public class BooksArray {
         editor.remove(GALLERY_PERMISSION_KEY);
         editor.remove(CAMERA_PERMISSION_KEY);
         editor.remove(FIREBASE_ANALYTICS_PERMISSION_KEY);
+        editor.remove(DONT_SHOW_FIREBASE_DIALOG_KEY);
         editor.apply();
     }
 
