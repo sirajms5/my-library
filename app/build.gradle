@@ -27,6 +27,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+        bundle {
+            storeArchive {
+                enable = false
+            }
+        }
 }
 
 dependencies {
