@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class AddBookActivity extends AppCompatActivity implements MethodsFactory{
+public class AddBookActivity extends AppCompatActivity implements MethodsFactory {
 
     private EditText nameEditTxt;
     private EditText authorEditTxt;
@@ -78,7 +78,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        if(getIntent().getBooleanExtra("back", false)){
+        if (getIntent().getBooleanExtra("back", false)) {
             overridePendingTransition(R.anim.navigation_back_slide_in, R.anim.navigation_back_slide_out);
         }
 
@@ -86,7 +86,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
         handlerManager();
         yearGenerator();
         autoSelector();
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Add Book A New Book");
         }
@@ -128,7 +128,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
             spinnerInput = yearSpinner.getSelectedItem().toString();
             notes = addNotesEditTxt.getText().toString();
 
-            if(validityCheck()){
+            if (validityCheck()) {
                 cancelErrors();
                 checkImageSource(imgCode, imgSource);
                 mainId++;
@@ -136,25 +136,24 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
 
 // Resource IDs will be non-final by default in Android Gradle Plugin version 8.0, avoid using them in switch case statements
                 int radioBtn = isReadingRadioGroup.getCheckedRadioButtonId();
-                if(radioBtn == R.id.currentlyReadingRadioBtn) {
+                if (radioBtn == R.id.currentlyReadingRadioBtn) {
                     BooksArray.getInstance(this).addToCurrentlyReadingBooks(incomingBook);
                     BooksArray.getInstance(this).addToAllBooks(incomingBook);
-                } else if(radioBtn == R.id.finishedReadingRadioBtn) {
+                } else if (radioBtn == R.id.finishedReadingRadioBtn) {
                     BooksArray.getInstance(this).addToAllBooks(incomingBook);
                     BooksArray.getInstance(this).addToAlreadyReadBooks(incomingBook);
-                } else if(radioBtn == R.id.wishlistRadioBtn){
+                } else if (radioBtn == R.id.wishlistRadioBtn) {
                     BooksArray.getInstance(this).addToAllBooks(incomingBook);
                     BooksArray.getInstance(this).addToMyWishlistBooks(incomingBook);
                 }
-                if(myFavCheckBox.isChecked()){
+                if (myFavCheckBox.isChecked()) {
                     BooksArray.getInstance(this).addToMyFavoriteBooks(incomingBook);
                 }
-                Snackbar.make(parentLayout, nameInput + " has been added to your library.", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Dismiss", view -> goBack())
-                        .show();
+                goBack(nameInput);
             } else {
                 Snackbar.make(parentLayout, "Fill fields with red text", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Dismiss", view -> {})
+                        .setAction("Dismiss", view -> {
+                        })
                         .show();
             }
         });
@@ -162,7 +161,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
 
     private void checkPermissions(String key, String request) {
         boolean isGranted = BooksArray.getInstance(this).getPermission(key);
-        if(key.equals("gallery")) {
+        if (key.equals("gallery")) {
             if (isGranted) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 activityResultLauncher.launch(intent);
@@ -184,7 +183,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
         builder.setTitle("Permission required");
         builder.setMessage("Allow My Library to access " + request + " on your device?");
         builder.setPositiveButton("ALLOW", (dialogInterface, i) -> {
-            if(key.equals("gallery")){
+            if (key.equals("gallery")) {
                 BooksArray.getInstance(AddBookActivity.this).grantPermissions(key, true);
             } else {
                 BooksArray.getInstance(AddBookActivity.this).grantPermissions(key, true);
@@ -192,7 +191,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
             checkPermissions(key, request);
         });
         builder.setNegativeButton("DENY", (dialogInterface, i) -> {
-            if(key.equals("gallery")){
+            if (key.equals("gallery")) {
                 BooksArray.getInstance(AddBookActivity.this).grantPermissions(key, false);
             } else {
                 BooksArray.getInstance(AddBookActivity.this).grantPermissions(key, false);
@@ -208,7 +207,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     }
 
     private void autoSelector() {
-        switch(handler){
+        switch (handler) {
             case "MyFavorites":
                 myFavCheckBox.setChecked(true);
                 break;
@@ -226,11 +225,11 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
 
     private boolean isReadingRadioGroupChecker() {
         int radioBtn = isReadingRadioGroup.getCheckedRadioButtonId();
-        if(radioBtn == R.id.currentlyReadingRadioBtn) {
+        if (radioBtn == R.id.currentlyReadingRadioBtn) {
             status = "Currently Reading";
-        } else if(radioBtn == R.id.finishedReadingRadioBtn) {
+        } else if (radioBtn == R.id.finishedReadingRadioBtn) {
             status = "Already Read";
-        } else if(radioBtn == R.id.wishlistRadioBtn) {
+        } else if (radioBtn == R.id.wishlistRadioBtn) {
             status = "On My Wishlist";
         }
 
@@ -246,32 +245,32 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     }
 
     private boolean validityCheck() {
-        if(
+        if (
                 !nameInput.equals("")
                         && !authorInput.equals("")
                         && !pagesNumInput.equals("")
                         && !spinnerInput.equals("")
                         && isReadingRadioGroupChecker()
-        ){
+        ) {
             return true;
         } else {
-            if(nameInput.equals("")){
+            if (nameInput.equals("")) {
                 nameError.setText(R.string.bookNameError);
                 nameError.setTextColor(Color.RED);
             }
-            if(authorInput.equals("")){
+            if (authorInput.equals("")) {
                 authorError.setText(R.string.authorNameError);
                 authorError.setTextColor(Color.RED);
             }
-            if(pagesNumInput.equals("")){
+            if (pagesNumInput.equals("")) {
                 pagesError.setText(R.string.pagesNumError);
                 pagesError.setTextColor(Color.RED);
             }
-            if(spinnerInput.equals("")){
+            if (spinnerInput.equals("")) {
                 publicationError.setText(R.string.publicationYearError);
                 publicationError.setTextColor(Color.RED);
             }
-            if(!isReadingRadioGroupChecker()){
+            if (!isReadingRadioGroupChecker()) {
                 isReadingError.setText(R.string.isReadingError);
                 isReadingError.setTextColor(Color.RED);
             }
@@ -282,21 +281,25 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     private void yearGenerator() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         yearsList = new ArrayList<>();
-        for(int i = year; i >= 1900; i--){
+        for (int i = year; i >= 1900; i--) {
             yearsList.add(i);
         }
         Collections.sort(yearsList, Collections.reverseOrder());
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String bookName) {
         Intent intent;
-        if(handler.equals("MainActivity")){
+        if (handler.equals("MainActivity")) {
             intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         } else {
             intent = new Intent(this, RecListActivity.class);
             intent.putExtra("from", handler);
+        }
+        intent.putExtra("bookName", bookName);
+        if (bookName != null) {
+            intent.putExtra("bookName", bookName);
         }
         intent.putExtra("back", true);
         startActivity(intent);
@@ -329,7 +332,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
 
     @Override
     public void onBackPressed() {
-        goBack();
+        goBack(null);
     }
 
     @Override
@@ -342,7 +345,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            goBack();
+            goBack(null);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -350,8 +353,8 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     public final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            if(result.getData() != null && result.getResultCode() == RESULT_OK){
-                if(result.getData().getClipData() != null){ //clip data is the image we got
+            if (result.getData() != null && result.getResultCode() == RESULT_OK) {
+                if (result.getData().getClipData() != null) { //clip data is the image we got
                     Uri selectedImage = result.getData().getData();
                     bookImg.setImageURI(selectedImage);
                     checkImageSource(selectedImage.toString(), "gallery");
@@ -363,7 +366,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     public final ActivityResultLauncher<Intent> cameraResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            if(result.getData() != null) {
+            if (result.getData() != null) {
                 Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
                 bookImg.setImageBitmap(bitmap);
                 // Creating a String for the Bitmap
@@ -377,7 +380,7 @@ public class AddBookActivity extends AppCompatActivity implements MethodsFactory
     });
 
     private void checkImageSource(String format, String imgFrom) {
-        switch (imgFrom){
+        switch (imgFrom) {
             case "gallery":
             case "camera":
                 imgCode = format;

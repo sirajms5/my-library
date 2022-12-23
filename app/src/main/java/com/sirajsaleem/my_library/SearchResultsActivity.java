@@ -128,7 +128,7 @@ public class SearchResultsActivity extends AppCompatActivity implements MethodsF
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         Intent intent;
         if(fromHandler.equals("MainActivity")){
             intent = new Intent(this, MainActivity.class);
@@ -392,7 +392,7 @@ public class SearchResultsActivity extends AppCompatActivity implements MethodsF
             sortBy = "dateAdded";
             sortList(sortBy);
         } else if(item.getItemId() == android.R.id.home) {
-            goBack();
+            goBack(null);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -400,7 +400,7 @@ public class SearchResultsActivity extends AppCompatActivity implements MethodsF
     @Override
     public void onBackPressed() {
         fromHandler = "MainActivity";
-        goBack();
+        goBack(null);
     }
 
     private final Runnable deleteCounter = new Runnable() {

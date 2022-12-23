@@ -78,6 +78,12 @@ public class RecListActivity extends AppCompatActivity implements MethodsFactory
         }
         createTitle();
 
+        if(getIntent().getStringExtra("bookName") != null){
+            Snackbar.make(parentLayout, getIntent().getStringExtra("bookName") + " has been added to your library.", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Dismiss", view -> {})
+                    .show();
+        }
+
         if(getIntent().getStringExtra("deletedBookName") != null){
             String deletedBook = getIntent().getStringExtra("deletedBookName") + " has been deleted.";
             Snackbar.make(parentLayout, deletedBook, Snackbar.LENGTH_INDEFINITE)
@@ -173,7 +179,7 @@ public class RecListActivity extends AppCompatActivity implements MethodsFactory
 
     @Override
     public void onBackPressed() {
-        goBack();
+        goBack(null);
     }
 
     @Override
@@ -330,7 +336,7 @@ public class RecListActivity extends AppCompatActivity implements MethodsFactory
                         })
                         .show();
             } else if(item.getItemId() == android.R.id.home) {
-                goBack();
+                goBack(null);
             }
         return super.onOptionsItemSelected(item);
     }
@@ -357,7 +363,7 @@ public class RecListActivity extends AppCompatActivity implements MethodsFactory
     };
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("back", true);
         startActivity(intent);

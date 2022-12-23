@@ -75,13 +75,13 @@ public class EditNotesActivity extends AppCompatActivity implements MethodsFacto
             }
             myBook.setNotes(noteInput);
             Snackbar.make(addNoteParentLayout, "Note have been updated", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Dismiss", view -> goBack())
+                    .setAction("Dismiss", view -> goBack(null))
                     .show();
         });
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         Intent intent;
         switch(fromHandler){
             case "MoreDetailsActivity":
@@ -127,7 +127,7 @@ public class EditNotesActivity extends AppCompatActivity implements MethodsFacto
     @Override
     public void onBackPressed() {
         fromHandler = "MainActivity";
-        goBack();
+        goBack(null);
     }
 
     @Override
@@ -140,7 +140,7 @@ public class EditNotesActivity extends AppCompatActivity implements MethodsFacto
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            goBack();
+            goBack(null);
         }
         return super.onOptionsItemSelected(item);
     }

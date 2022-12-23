@@ -102,7 +102,7 @@ public class MoreDetailsActivity extends AppCompatActivity implements MethodsFac
                 BooksArray.getInstance(MoreDetailsActivity.this).removeBook(myBook, "myWishlistBooks");
                 BooksArray.getInstance(MoreDetailsActivity.this).removeBook(myBook, "myFavoriteBooks");
                 BooksArray.getInstance(MoreDetailsActivity.this).removeBook(myBook, "searchList");
-                goBack();
+                goBack(null);
             });
             builder.setNegativeButton("No", (dialogInterface, i) -> {
 
@@ -243,7 +243,7 @@ public class MoreDetailsActivity extends AppCompatActivity implements MethodsFac
     @Override
     public void onBackPressed() {
         fromHandler = "MainActivity";
-        goBack();
+        goBack(null);
     }
 
     @Override
@@ -256,7 +256,7 @@ public class MoreDetailsActivity extends AppCompatActivity implements MethodsFac
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
-            goBack();
+            goBack(null);
         } else {
             Dialog dialog = new Dialog(this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -364,7 +364,7 @@ public class MoreDetailsActivity extends AppCompatActivity implements MethodsFac
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         Intent intent;
         switch(fromHandler){
             case "search":

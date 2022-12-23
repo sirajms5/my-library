@@ -1,7 +1,7 @@
 package com.sirajsaleem.my_library;
 
 public interface MethodsFactory {
-        void goBack();
+        void goBack(String string);
         void handlerManager();
         void findViews();
 }

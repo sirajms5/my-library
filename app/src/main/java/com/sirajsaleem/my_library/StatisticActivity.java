@@ -117,7 +117,7 @@ public class StatisticActivity extends AppCompatActivity implements MethodsFacto
 
     @Override
     public void onBackPressed() {
-        goBack();
+        goBack(null);
     }
 
     @Override
@@ -130,13 +130,13 @@ public class StatisticActivity extends AppCompatActivity implements MethodsFacto
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            goBack();
+            goBack(null);
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("back", true);
         startActivity(intent);
