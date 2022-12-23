@@ -2,6 +2,7 @@ package com.sirajsaleem.my_library;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity implements MethodsFactory{
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements MethodsFactory{
     private Button btnAbout;
     private FloatingActionButton floater;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private ConstraintLayout parentLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements MethodsFactory{
         findViews();
         //setting up sharedPreferences
         BooksArray.getInstance(this);
+
+        if(getIntent().getStringExtra("bookName") != null){
+            Snackbar.make(parentLayout, getIntent().getStringExtra("bookName") + " has been added to your library.", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Dismiss", view -> {})
+                    .show();
+        }
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -152,10 +161,11 @@ public class MainActivity extends AppCompatActivity implements MethodsFactory{
         btnAbout = findViewById(R.id.btnAbout);
         floater = findViewById(R.id.floatingBtn);
         statisticBtn = findViewById(R.id.statistics);
+        parentLayout = findViewById(R.id.parentLayoutMain);
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         //not required in this activity
     }
 

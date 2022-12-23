@@ -38,7 +38,7 @@ public class WebsiteActivity extends AppCompatActivity implements MethodsFactory
     }
 
     @Override
-    public void goBack() {
+    public void goBack(String string) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("back", true);
         startActivity(intent);
@@ -59,12 +59,12 @@ public class WebsiteActivity extends AppCompatActivity implements MethodsFactory
         Pattern pattern = Pattern.compile("https://sirajsaleem\\.com/#.*");
         Matcher matcher = pattern.matcher(webView.getUrl());
         if(matcher.matches()){
-            goBack();
+            goBack(null);
         } else {
             if (webView.canGoBack()) {
                 webView.goBack();
             } else {
-                goBack();
+                goBack(null);
             }
         }
     }
@@ -75,12 +75,12 @@ public class WebsiteActivity extends AppCompatActivity implements MethodsFactory
             Pattern pattern = Pattern.compile("https://sirajsaleem\\.com/#.*");
             Matcher matcher = pattern.matcher(webView.getUrl());
             if(matcher.matches()){
-                goBack();
+                goBack(null);
             } else {
                 if (webView.canGoBack()) {
                     webView.goBack();
                 } else {
-                    goBack();
+                    goBack(null);
                 }
             }
         }
