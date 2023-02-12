@@ -5,7 +5,7 @@ A library for books collection and to keep track of books if they are already re
 
 *THE CLEANEST LIBRARY TO KEEP TRACK OF YOU BOOKS COLLECTION FOR ANDROID, 100% FREE, NO ADS AND OPEN-SOURCE*
 
-My Library, a library for books collection, 100% free, you can add unlimited  amount of books to your library to keep track of what books you Currently Reading, Already Finished Reading, book On Your Wishlist.
+My Library, a library for books collection, 100% free, you can add unlimited  number of books to your library to keep track of what books you Currently Reading, Already Finished Reading, book On Your Wishlist.
 
 Features:
 
