@@ -244,11 +244,11 @@
             android:id="@+id/addBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="50dp"
             android:text="@string/addBook"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/selectImgBtn"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/selectImgBtn"
             app:layout_constraintTop_toTopOf="@+id/selectImgBtn"
             tools:ignore="TextContrastCheck" />
 
@@ -270,10 +270,10 @@
             android:id="@+id/selectImgBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/select_image"
             app:cornerRadius="10dp"
-            app:layout_constraintEnd_toStartOf="@+id/addBtn"
             app:layout_constraintStart_toEndOf="@+id/bookImg"
             app:layout_constraintTop_toBottomOf="@+id/addNotesEditTxt"
             tools:ignore="TextContrastCheck" />

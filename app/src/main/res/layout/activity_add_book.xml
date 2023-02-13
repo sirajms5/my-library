@@ -251,26 +251,23 @@
         android:id="@+id/bookImg"
         android:layout_width="100dp"
         android:layout_height="80dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:contentDescription="@string/book_image"
         android:src="@mipmap/books"
-        app:layout_constraintBottom_toBottomOf="@+id/selectImgBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/addNotesEditTxt"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="ImageContrastCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/selectImgBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:text="@string/select_image"
         app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
         app:layout_constraintStart_toEndOf="@+id/bookImg"
-        app:layout_constraintTop_toBottomOf="@+id/addNotesEditTxt"
+        app:layout_constraintTop_toTopOf="@+id/bookImg"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -302,7 +299,7 @@
         android:autofillHints=""
         android:hint="@string/notes_hint"
         android:inputType="textMultiLine"
-        android:lines="2"
+        android:lines="1"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/notesTxt"
