@@ -1,7 +1,10 @@
 # my-library
 
-A library for books collection and to keep track of books if they are already read, currently reading, or on my Wishlist as well as favorite books.
+### Languages used to develope My Library application: Java and XML using Android Development Kit. 
 
+-----
+
+A library for books collection and to keep track of books if they are already read, currently reading, or on my Wishlist as well as favorite books.
 
 *THE CLEANEST LIBRARY TO KEEP TRACK OF YOU BOOKS COLLECTION FOR ANDROID, 100% FREE, NO ADS AND OPEN-SOURCE*
 
@@ -18,3 +21,11 @@ Features:
 🟊 Ability to add a book cover image to your book.
 
 Backstory: this app started out much simpler, but I added more features and decided to make it into a project! I hope you enjoy it.
+
+### Click on [My Library](https://sirajsaleem.com/apps/my-library/my-library.html) to visit My Library web page.
+-----
+Below is a screenshot of the main page of the application:
+#####
+<div align="center">
+  <img height="500px" src="https://sirajsaleem.com/apps/my-library/images/main-menu.png" alt="main menu image" />
+</div>
