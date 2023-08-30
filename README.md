@@ -24,6 +24,3 @@ Below is a sceenshot of My Library App:
 <div align="center">
   <img height="500px" src="https://sirajsaleem.com/apps/my-library/images/main-menu.png" alt="main menu image" />
 </div>
-<div align="center">
-  <img height="500px" src="https://sirajsaleem.com/images/portfolio/my-library.gif" alt="main menu image" />
-</div>
