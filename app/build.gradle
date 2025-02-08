@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace 'com.sirajsaleem.my_library'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.sirajsaleem.my_library"
         minSdk 22
-        targetSdk 33
-        versionCode 4
-        versionName "3.1"
+        targetSdk 34
+        versionCode 5
+        versionName "3.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
